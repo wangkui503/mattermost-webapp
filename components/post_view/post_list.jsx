@@ -6,8 +6,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {FormattedMessage} from 'react-intl';
 
-import {debounce} from 'mattermost-redux/actions/helpers';
 import {isUserActivityPost} from 'mattermost-redux/utils/post_utils';
+import {debounce} from 'mattermost-redux/actions/helpers';
 
 import Constants, {PostTypes} from 'utils/constants.jsx';
 import DelayedAction from 'utils/delayed_action.jsx';
@@ -52,11 +52,6 @@ export default class PostList extends React.PureComponent {
          * The last time the channel was viewed, sets the new message separator
          */
         lastViewedAt: PropTypes.number,
-
-        /**
-         * Set if more posts are being loaded
-         */
-        loadingPosts: PropTypes.bool,
 
         /**
          * The user id of the logged in user
@@ -118,6 +113,7 @@ export default class PostList extends React.PureComponent {
         this.atBottom = false;
 
         this.extraPagesLoaded = 0;
+        this.atBottom = false;
 
         this.state = {
             atEnd: false,
@@ -323,8 +319,8 @@ export default class PostList extends React.PureComponent {
         }
 
         // Scroll to bottom since we don't have unread posts or we can show every new post in the screen
-        postList.scrollTop = postList.scrollHeight;
         this.atBottom = true;
+        postList.scrollTop = postList.scrollHeight;
         return true;
     }
 

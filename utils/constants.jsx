@@ -278,6 +278,7 @@ export const ModalIdentifiers = {
     CHANNEL_NOTIFICATIONS: 'channel_notifications',
     CHANNEL_INVITE: 'channel_invite',
     CHANNEL_MEMBERS: 'channel_members',
+    ADD_USER_TO_CHANNEL: 'add_user_to_channel',
     CREATE_DM_CHANNEL: 'create_dm_channel',
     EDIT_CHANNEL_HEADER: 'edit_channel_header',
     EDIT_CHANNEL_PURPOSE: 'edit_channel_purpose',
@@ -290,6 +291,7 @@ export const ModalIdentifiers = {
     QUICK_SWITCH: 'quick_switch',
     REMOVED_FROM_CHANNEL: 'removed_from_channel',
     EMAIL_INVITE: 'email_invite',
+    INTERACTIVE_DIALOG: 'interactive_dialog',
 };
 
 export const UserStatuses = {
@@ -346,6 +348,7 @@ export const SocketEvents = {
     LICENSE_CHANGED: 'license_changed',
     CONFIG_CHANGED: 'config_changed',
     PLUGIN_STATUSES_CHANGED: 'plugin_statuses_changed',
+    OPEN_DIALOG: 'open_dialog',
 };
 
 export const TutorialSteps = {
@@ -1250,6 +1253,8 @@ export const Constants = {
     MAX_TRIGGER_LENGTH: 128,
     MAX_SITENAME_LENGTH: 30,
     MAX_CUSTOM_BRAND_TEXT_LENGTH: 500,
+    MAX_TERMS_OF_SERVICE_TEXT_LENGTH: 16383,
+    DEFAULT_TERMS_OF_SERVICE_RE_ACCEPTANCE_PERIOD: 365,
     MIN_HASHTAG_LINK_LENGTH: 3,
     CHANNEL_SCROLL_ADJUSTMENT: 100,
     EMOJI_PATH: '/static/emoji',
@@ -1274,6 +1279,7 @@ export const Constants = {
     MENTION_MORE_CHANNELS: 'mention.morechannels',
     MENTION_UNREAD_CHANNELS: 'mention.unread.channels',
     MENTION_MEMBERS: 'mention.members',
+    MENTION_MORE_MEMBERS: 'mention.moremembers',
     MENTION_NONMEMBERS: 'mention.nonmembers',
     MENTION_SPECIAL: 'mention.special',
     DEFAULT_NOTIFICATION_DURATION: 5000,
@@ -1301,6 +1307,7 @@ t('suggestion.mention.channels');
 t('suggestion.mention.morechannels');
 t('suggestion.mention.unread.channels');
 t('suggestion.mention.members');
+t('suggestion.mention.moremembers');
 t('suggestion.mention.nonmembers');
 t('suggestion.mention.special');
 
