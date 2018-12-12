@@ -590,6 +590,27 @@
     }
 
     .modal-tabs {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .tab-content {
+            flex: 1 1 auto;
+            height: auto;
+            flex-direction: column;
+            display: flex;
+        }
+
+        .tab-pane {
+            flex: 1 1 auto;
+            height: auto;
+            display: none;
+
+            &.active {
+                display: flex;
+            }
+        }
+
         .nav-tabs {
             margin: 0 0 16px;
 
@@ -877,15 +898,5 @@
 .more-public-direct-channels {
     .filtered-user-list {
         height: calc(90vh - 180px);
-    }
-}
-
-.new-channel {
-    .type-container {
-        margin-top: 8px;
-    }
-    .type-icon {
-        padding-left: 1px;
-        padding-right: 7px;
     }
 }
