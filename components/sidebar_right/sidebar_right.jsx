@@ -13,6 +13,7 @@ import FileUploadOverlay from 'components/file_upload_overlay.jsx';
 import RhsThread from 'components/rhs_thread';
 import SearchBar from 'components/search_bar';
 import SearchResults from 'components/search_results';
+import Pluggable from 'plugins/pluggable';
 
 export default class SidebarRight extends React.PureComponent {
     static propTypes = {
@@ -30,11 +31,12 @@ export default class SidebarRight extends React.PureComponent {
             setRhsExpanded: PropTypes.func.isRequired,
             showPinnedPosts: PropTypes.func.isRequired,
         }),
+        isPluggableView: PropTypes.bool,
     };
 
     componentDidUpdate(prevProps) {
-        const wasOpen = prevProps.searchVisible || prevProps.postRightVisible;
-        const isOpen = this.props.searchVisible || this.props.postRightVisible;
+        const wasOpen = prevProps.searchVisible || prevProps.postRightVisible || prevProps.isPluggableView;
+        const isOpen = this.props.searchVisible || this.props.postRightVisible || this.props.isPluggableView;
 
         if (!wasOpen && isOpen) {
             trackEvent('ui', 'ui_rhs_opened');
@@ -61,6 +63,7 @@ export default class SidebarRight extends React.PureComponent {
             postRightVisible,
             previousRhsState,
             searchVisible,
+            isPluggableView,
         } = this.props;
 
         let content = null;
@@ -84,7 +87,13 @@ export default class SidebarRight extends React.PureComponent {
             }
         }
 
-        if (searchVisible) {
+        let vstyle = {display: 'none'};
+        if (isPluggableView) {
+            /* content = (
+                <Pluggable pluggableName='RightSidebarPlugin'/>
+            ); */
+            vstyle = {display: 'block'};
+        } else if (searchVisible) {
             content = (
                 <div className='sidebar--right__content'>
                     <div className='search-bar__container channel-header alt'>{searchForm}</div>
@@ -113,9 +122,9 @@ export default class SidebarRight extends React.PureComponent {
             );
         }
 
-        if (!content) {
+        /* if (!content) {
             expandedClass = '';
-        }
+        } */
 
         return (
             <div
@@ -127,6 +136,9 @@ export default class SidebarRight extends React.PureComponent {
                     className='sidebar--right__bg'
                 />
                 <div className='sidebar-right-container'>
+                    <div style={vstyle}>
+                        <Pluggable pluggableName='RightSidebarPlugin'/>
+                    </div>
                     {content}
                 </div>
             </div>

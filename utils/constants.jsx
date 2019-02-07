@@ -436,6 +436,7 @@ export const RHSStates = {
     SEARCH: 'search',
     FLAG: 'flag',
     PIN: 'pin',
+    PLUGGABLE: 'pluggable',
 };
 
 export const UploadStatuses = {

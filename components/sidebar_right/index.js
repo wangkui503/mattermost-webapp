@@ -51,6 +51,7 @@ function mapStateToProps(state) {
         isMentionSearch: rhsState === RHSStates.MENTION,
         isFlaggedPosts: rhsState === RHSStates.FLAG,
         isPinnedPosts: rhsState === RHSStates.PIN,
+        isPluggableView: rhsState === RHSStates.PLUGGABLE,
     };
 }
 
